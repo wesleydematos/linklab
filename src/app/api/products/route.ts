@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb'
+import { MongoClient, ObjectId } from 'mongodb'
 import { NextRequest, NextResponse } from 'next/server'
 
 interface iBody {
@@ -7,6 +7,12 @@ interface iBody {
   value: number
   note: number
 }
+
+interface iDelete {
+  _id: string
+}
+
+const clientLink = 'mongodb+srv://wesleydematos3:0ohqM4f7yMFRPPCu@cluster0.iozycrx.mongodb.net/?retryWrites=true&w=majority'
 
 export async function POST(req: NextRequest) {
   try {
@@ -23,11 +29,10 @@ export async function POST(req: NextRequest) {
       })
     }
     
-    const client = await MongoClient.
-      connect("mongodb+srv://wesleydematos3:0ohqM4f7yMFRPPCu@cluster0.iozycrx.mongodb.net/?retryWrites=true&w=majority")
+    const client = await MongoClient.connect(clientLink)
     
     const db = client.db()
-    const productsCollection = db.collection("products")
+    const productsCollection = db.collection('products')
 
     await productsCollection.insertOne({ name, image, value, note })
 
@@ -41,7 +46,7 @@ export async function POST(req: NextRequest) {
       })
   } catch (error) {
     return NextResponse.json({
-      message: "Error",
+      message: 'Error',
       error
     }, 
     {
@@ -52,12 +57,11 @@ export async function POST(req: NextRequest) {
 
 export async function GET() {
   try {
-    const client = await MongoClient.
-    connect("mongodb+srv://wesleydematos3:0ohqM4f7yMFRPPCu@cluster0.iozycrx.mongodb.net/?retryWrites=true&w=majority")
+    const client = await MongoClient.connect(clientLink)
   
     const db = client.db()
     
-    const productsCollection = db.collection("products")
+    const productsCollection = db.collection('products')
 
     const allProducts = await productsCollection.find().toArray()
 
@@ -66,7 +70,46 @@ export async function GET() {
     return NextResponse.json(allProducts)
   } catch (error) {
     return NextResponse.json({
-      message: "Error",
+      message: 'Error',
+      error
+    }, 
+    {
+      status: 500
+    })
+  }
+}
+
+export async function DELETE(req: NextRequest) {
+  try {
+    const { _id } : iDelete = await req.json()
+
+    const client = await MongoClient.connect(clientLink)
+  
+    const db = client.db()
+    
+    const productsCollection = db.collection('products')
+
+    const objectId = new ObjectId(_id);
+
+    const deletionResult  = await productsCollection.deleteOne({_id: objectId})
+
+    client.close()
+
+    if (deletionResult.deletedCount === 1) {
+      return NextResponse.json({ 
+        message: 'Produto deletado com sucesso!' 
+      })
+    } else {
+      return NextResponse.json({ 
+        message: 'Não foi possível deletar produto!' 
+      },
+      {
+        status: 400
+      })
+    }
+  } catch (error) {
+    return NextResponse.json({
+      message: 'Error',
       error
     }, 
     {
