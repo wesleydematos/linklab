@@ -1,3 +1,4 @@
+import { StoreProvider } from '@/store/StoreProvider'
 import type { Metadata } from 'next'
 import { DM_Sans } from 'next/font/google'
 
@@ -14,8 +15,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR">
-      <body className={dm.className}>{children}</body>
-    </html>
+    <StoreProvider>
+      <html lang="pt-BR">
+        <body className={dm.className}>{children}</body>
+      </html>
+    </StoreProvider>
   )
 }
