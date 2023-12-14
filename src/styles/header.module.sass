@@ -1,4 +1,5 @@
 @import './_variables'
+@import './mixins'
   
 .header
   position: fixed
@@ -9,9 +10,55 @@
   padding: 20px
   z-index: 100
 
-  @media (min-width: 1024px)
-    padding: 30px 220px
+  @media (min-width: 1440px)
+    padding: 30px 180px
     width: calc( 100vw - 60px )
+
+  nav
+    margin-right: 343px
+    display: flex
+    justify-content: space-between
+    width: calc( 100vw - 343px )
+    a
+      width: fit-content
+      text-decoration: none
+      color: $white
+      font-size: 15px 
+      font-weight: 400
+      &:focus
+        color: $secondary
+
+    >a
+      @include flexCenter(row)
+      background-color: $lprimary
+      width: 132px
+      height: 42px
+      border-radius: 10px
+      &:focus
+        background-color: #626383
+        color: $white
+        border-radius: 15px
+        
+
+      img
+        margin-right: 5px
+
+    div
+      display: flex
+      align-items: center
+      gap: 20px
+      margin-left: 50px
+      a
+        text-align: center
+        span
+          margin-left: 2px
+          display: inline-block
+          transform: scaleX(2)
+          font-size: 10px
+
+    @media (max-width: 1439px) 
+      display: none
+
 
   .mobile_items
     display: flex
@@ -21,6 +68,7 @@
     img
       cursor: pointer
 
-    @media (min-width: 1024px)
+    @media (min-width: 1440px)
       display: none
     
+ 
