@@ -1,0 +1,26 @@
+@import './_variables'
+  
+.header
+  position: fixed
+  display: flex
+  justify-content: space-between
+  background-color: $primary
+  width: calc( 100vw - 40px )
+  padding: 20px
+  z-index: 100
+
+  @media (min-width: 1024px)
+    padding: 30px 220px
+    width: calc( 100vw - 60px )
+
+  .mobile_items
+    display: flex
+    align-items: center
+    gap: 10px
+
+    img
+      cursor: pointer
+
+    @media (min-width: 1024px)
+      display: none
+    
