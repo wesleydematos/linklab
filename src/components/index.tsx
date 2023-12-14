@@ -1,9 +1,9 @@
-import Header from "./Header";
-import MobileHeader from "./MobileHeader";
-import HeaderModal from "./HeaderModal";
+import Header from './Header'
+import HeaderModal from './HeaderModal'
+import Hero from './Hero'
 
 export {
   Header,
-  MobileHeader,
-  HeaderModal
+  HeaderModal,
+  Hero
 }
