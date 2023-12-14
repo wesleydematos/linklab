@@ -12,6 +12,15 @@
   color: $white
   z-index: 10
 
+  a
+    width: fit-content
+    text-decoration: none
+    color: $white
+    font-size: 15px 
+    font-weight: 400
+    &:focus
+      color: $lblue
+
   p
     height: fit-content
     font-size: 20px
@@ -26,23 +35,31 @@
     flex-direction: column
     gap: 15px
     margin-bottom: 30px
-    a
-      text-decoration: none
-      color: $white
-      font-size: 15px 
-      font-weight: 400
-      &:focus
-        color: $lblue
+    // a
+    //   text-decoration: none
+    //   color: $white
+    //   font-size: 15px 
+    //   font-weight: 400
+    //   &:focus
+    //     color: $lblue
 
   ul
+    display: flex
+    flex-wrap: wrap
     list-style: none
     margin: 0
     padding: 0
-    margin-bottom: 15px
+    margin-bottom: 20px
     p
+      width: 100%
       font-size: 16px
       font-weight: 400
       margin: 0 0 15px 0
+    li
+      width: 50%
+      display: flex
+      gap: 10px
+
 
   @media (min-width: 1024px)
       display: none

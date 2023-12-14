@@ -39,7 +39,7 @@ export default function HeaderModal() {
           labs.map((lab=>
             <li key={lab.name}>
               <Image src={lab.icon} width={20} height={20} alt={lab.name}/>
-              {lab.name}
+              <a href='#'>{lab.name}</a>
             </li>  
           ))
         }
@@ -50,7 +50,7 @@ export default function HeaderModal() {
           utensils.map((utensil=>
             <li key={utensil.name}>
               <Image src={utensil.icon} width={20} height={20} alt={utensil.name}/>
-              {utensil.name}
+              <a href='#'>{utensil.name}</a>
             </li>  
           ))
         }
