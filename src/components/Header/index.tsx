@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <>
       <header className={styles.header}>
-        <Image src={logo} width={163} height={42} alt='Logo halogenn' priority/>
+        <Image src={logo} width={144} height={31} alt='Logo halogenn' priority/>
         <div className={styles.mobile_items}>
           <Image src={budgets} width={41} height={41} alt='Budgets'/>
           <Image src={menu} width={29} height={29} alt='Menu hamburguer' onClick={()=> setModal(!modal)}/> 
