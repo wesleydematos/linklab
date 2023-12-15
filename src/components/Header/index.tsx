@@ -8,10 +8,14 @@ import logo from '../../../public/halogenn.png'
 import menu from '../../../public/menu.png'
 import budgets from '../../../public/budgets.png'
 import bud from '../../../public/bud.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@/store/store'
+import { setDropdown } from '@/store/slice'
 
 export default function Header() {
   const [modal, setModal] = useState(false)
-  const [dropDown, setDropdown] = useState(false)
+  const dropDown = useSelector((state: RootState) => state.products.dropDown)
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -24,7 +28,7 @@ export default function Header() {
         <nav>
           <div>
             <a href='#'>Início</a>
-            <a href='#' onClick={()=> setDropdown(!dropDown)}>Produtos <span> v</span></a>
+            <a href='#' onClick={()=> dispatch(setDropdown())}>Produtos <span> v</span></a>
             <a href='#'>Laudos</a>
             <a href='#'>Sobre Nós</a>
             <a href='#'>Certificações</a>

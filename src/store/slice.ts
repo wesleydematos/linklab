@@ -10,10 +10,12 @@ interface iProduct {
 
 export interface iProductState{
   products: [] | iProduct[]
+  dropDown: boolean
 }
 
 const initialState: iProductState = {
-  products: []
+  products: [],
+  dropDown: false
 }
 
 export const productSlice = createSlice({
@@ -28,9 +30,12 @@ export const productSlice = createSlice({
         value: 200,
         note: 9.5
       }]
+    },
+    setDropdown: (state) => {
+      state.dropDown = !state.dropDown
     }
   }
 })
 
-export const { change } = productSlice.actions 
+export const { change, setDropdown } = productSlice.actions 
 export default productSlice.reducer

@@ -8,7 +8,7 @@ import { change } from '@/store/slice'
 import { useEffect } from 'react'
 
 export default function Home() {
-  const products = useSelector((state: RootState) => state.products.products)
+  const { products, dropDown } = useSelector((state: RootState) => state.products)
   const dispatch = useDispatch()
 
   useEffect(()=>{
@@ -18,15 +18,17 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Header/>
-      {
-        products.length ? 
-        <ul>
-          {products.map((product) => 
-            <li key={product._id}>{product.name}</li>
-          )}
-        </ul> 
-        : <p>Nenhum produto encontrado...</p>
-      }
+      <section className={`${!dropDown && styles.section}`}>
+        {
+          products.length ? 
+          <ul>
+            {products.map((product) => 
+              <li key={product._id}>{product.name}</li>
+            )}
+          </ul> 
+          : <p>Nenhum produto encontrado...</p>
+        }
+      </section>
     </main>
   )
 }
