@@ -1,7 +1,7 @@
 "use client"
 
 import styles from '@/styles/page.module.sass'
-import { Header } from '../components'
+import { Header, Items } from '../components'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store/store'
 import { change } from '@/store/slice'
@@ -18,14 +18,27 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Header/>
-      <section className={`${!dropDown && styles.section}`}>
+      <section>
+        <div className={styles.items}>
+          <div className={styles.bg_blue}/>
+          <div className={styles.bg}/>
+          <div className={`${dropDown ? styles.items_drop : styles.normal_items}`}>
+            <Items/>
+          </div>
+        </div>
+      </section>
+      <section className={`${!dropDown && styles.section} ${styles.products}`}>
         {
           products.length ? 
-          <ul>
-            {products.map((product) => 
-              <li key={product._id}>{product.name}</li>
-            )}
-          </ul> 
+          <>
+            <h1>PRODUTOS</h1>
+            <ul>
+              {products.map((product) => <>
+                <li key={product._id}>{product.name}</li>
+              </>
+              )}
+            </ul> 
+          </>
           : <p>Nenhum produto encontrado...</p>
         }
       </section>

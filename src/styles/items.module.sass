@@ -1,0 +1,60 @@
+@import './_variables'
+
+.items
+  display: flex
+  flex-direction: column
+  width: 100%
+  color: $primary
+
+  p
+    font-size: 18px
+    width: 120px
+
+  > div
+    display: flex
+    justify-content: space-between
+    align-items: center
+    background-color: $tertiary
+    padding: 20px
+    > div
+      display: flex
+      align-items: center
+      gap: 15px
+    span
+      display: none
+    &:nth-child(2)
+      background-color: $secondary
+      color: $white
+
+  @media (min-width: 1440px) 
+    flex-direction: row
+    z-index: 8
+
+    p
+      font-size: 36px
+      width: 60%
+      margin: 0
+
+    > div  
+      flex-direction: column
+      height: 509px
+      width: 33%
+      &:nth-child(2)
+        height: 541px
+        > div
+          margin-bottom: 32px
+
+      > div
+        flex-direction: column
+        align-items: flex-start
+        gap: 0
+
+      span
+        font-size: 18px
+        font-weight: 700
+        display: block
+      
+      > img
+        display: none
+
+
