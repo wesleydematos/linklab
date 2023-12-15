@@ -2,19 +2,32 @@
 
 import styles from '@/styles/page.module.sass'
 import { Header, Items, ProductCard } from '../components'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from '@/store/store'
-import { change } from '@/store/slice'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import made from '../../public/made.png'
 import Image from 'next/image'
+import axios from 'axios'
+
+interface iProduct {
+  _id: string
+  name: string
+  image: string
+  value: number
+  note: number
+}
 
 export default function Home() {
-  const { products, dropDown } = useSelector((state: RootState) => state.products)
-  const dispatch = useDispatch()
+  const { dropDown } = useSelector((state: RootState) => state.products)
+  const [products, setProducts] = useState([])
+
+  async function getData(){
+    const { data } = await axios.get("/api/products")
+    setProducts(data)
+  }
 
   useEffect(()=>{
-    dispatch(change())
+    getData()
   }, [])
 
   return (
@@ -36,7 +49,12 @@ export default function Home() {
           products.length ? 
           <>
             <h1>PRODUTOS</h1>
-            <ProductCard/>
+            <ul>
+              {
+                products.map((product: iProduct)=> <ProductCard product={product} key={product._id}/>)
+              }
+            </ul>
+            <Image src={made} width={150} height={150} alt='made with science'/>
           </>
           : <p>Nenhum produto encontrado...</p>
         }
