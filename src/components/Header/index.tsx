@@ -38,6 +38,15 @@ export default function Header() {
       </header>
       {modal && <HeaderModal/>}
       {dropDown && <Dropdown/>}
+      <section className={styles.section}>
+        <h1>
+          Qualidade e expertise em produtos <span>químicos e acessórios</span>
+        </h1>
+        <p>
+          Estamos preparados para te entender e atender da melhor forma para suprir 
+          todas as suas demandas em químicos e similares.
+        </p>
+      </section>
     </>
   )
 }
