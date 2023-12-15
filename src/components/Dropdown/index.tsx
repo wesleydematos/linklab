@@ -1,4 +1,4 @@
-import styles from '@/styles/hero.module.sass'
+import styles from '@/styles/dropdown.module.sass'
 import equip from '../../../public/equip.png'
 import term from '../../../public/term.png'
 import acess from '../../../public/acess.png'
@@ -8,7 +8,7 @@ import plas from '../../../public/plas.png'
 import porc from '../../../public/porc.png'
 import Image from 'next/image'
 
-export default function Hero() {
+export default function Dropdown() {
   const labs = [
     { name: "Equipamentos", icon: equip },
     { name: "Termômetros", icon: term },
@@ -22,7 +22,7 @@ export default function Hero() {
   ]
 
   return (
-    <div className={styles.hero}>
+    <div className={styles.dropdown}>
       <div className={styles.border}>
       <h2>Catálogo completo de itens para você</h2>
       <div className={styles.divisor}> 

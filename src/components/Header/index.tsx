@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
-import { HeaderModal, Hero } from '@/components'
+import { HeaderModal, Dropdown } from '@/components'
 import styles from '@/styles/header.module.sass'
 import logo from '../../../public/halogenn.png'
 import menu from '../../../public/menu.png'
@@ -11,7 +11,7 @@ import bud from '../../../public/bud.png'
 
 export default function Header() {
   const [modal, setModal] = useState(false)
-  const [hero, setHero] = useState(false)
+  const [dropDown, setDropdown] = useState(false)
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function Header() {
         <nav>
           <div>
             <a href='#'>Início</a>
-            <a href='#' onClick={()=> setHero(!hero)}>Produtos <span> v</span></a>
+            <a href='#' onClick={()=> setDropdown(!dropDown)}>Produtos <span> v</span></a>
             <a href='#'>Laudos</a>
             <a href='#'>Sobre Nós</a>
             <a href='#'>Certificações</a>
@@ -37,7 +37,7 @@ export default function Header() {
         </nav>
       </header>
       {modal && <HeaderModal/>}
-      {hero && <Hero/>}
+      {dropDown && <Dropdown/>}
     </>
   )
 }
