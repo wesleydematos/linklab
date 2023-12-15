@@ -28,7 +28,7 @@ export default function Header() {
         <nav>
           <div>
             <a href='#'>Início</a>
-            <a href='#' onClick={()=> dispatch(setDropdown())}>Produtos <span> v</span></a>
+            <a href='#' onClick={()=> dispatch(setDropdown())}>Produtos <span>{dropDown ? ' ^' : ' v'}</span></a>
             <a href='#'>Laudos</a>
             <a href='#'>Sobre Nós</a>
             <a href='#'>Certificações</a>
