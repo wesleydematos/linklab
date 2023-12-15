@@ -1,11 +1,13 @@
 "use client"
 
 import styles from '@/styles/page.module.sass'
-import { Header, Items } from '../components'
+import { Header, Items, ProductCard } from '../components'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store/store'
 import { change } from '@/store/slice'
 import { useEffect } from 'react'
+import made from '../../public/made.png'
+import Image from 'next/image'
 
 export default function Home() {
   const { products, dropDown } = useSelector((state: RootState) => state.products)
@@ -20,7 +22,9 @@ export default function Home() {
       <Header/>
       <section>
         <div className={styles.items}>
-          <div className={styles.bg_blue}/>
+          <div className={styles.bg_blue}>
+            <Image src={made} width={150} height={150} alt='made with science'/>
+          </div>
           <div className={styles.bg}/>
           <div className={`${dropDown ? styles.items_drop : styles.normal_items}`}>
             <Items/>
@@ -32,12 +36,7 @@ export default function Home() {
           products.length ? 
           <>
             <h1>PRODUTOS</h1>
-            <ul>
-              {products.map((product) => <>
-                <li key={product._id}>{product.name}</li>
-              </>
-              )}
-            </ul> 
+            <ProductCard/>
           </>
           : <p>Nenhum produto encontrado...</p>
         }

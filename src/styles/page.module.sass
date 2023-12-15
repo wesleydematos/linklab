@@ -4,25 +4,35 @@
   display: flex
   flex-direction: column
   min-height: 100vh
+  h1
+    color: $primary
+    font-size: 24px
+    font-weight: 700
 
 .section
   @media (min-width: 1440px)
     margin-top: 102px
 
 .products
-  padding: 0 180px
+  padding: 0 20px
+  @media (min-width: 1440px)
+    padding: 0 180px
 
 .items
   padding: 30px 20px
   @media (min-width: 1440px)
     padding: 0
-      
 
 .bg_blue
+  display: flex
+  justify-content: space-between
   display: none
   width: 100%
   height: 400px
   background-color: $primary
+  img
+    margin-top: 220px
+    margin-left: 10px
   @media (min-width: 1440px)
     display: block
 
