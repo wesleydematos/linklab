@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import styles from '@/styles/page.module.sass'
 import { Header, Items, ProductCard } from '../components'
@@ -22,7 +22,7 @@ export default function Home() {
   const [products, setProducts] = useState([])
 
   async function getData(){
-    const { data } = await axios.get("/api/products")
+    const { data } = await axios.get('/api/products')
     setProducts(data)
   }
 
@@ -56,7 +56,10 @@ export default function Home() {
             </ul>
             <Image src={made} width={150} height={150} alt='made with science'/>
           </>
-          : <p>Nenhum produto encontrado...</p>
+          : <div className={styles.loading}>
+              <div/> 
+              <p>Nenhum produto encontrado...</p>
+            </div>
         }
       </section>
     </main>
