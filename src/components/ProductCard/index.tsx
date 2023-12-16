@@ -1,6 +1,7 @@
-"use client"
+'use client'
 
-import Image from "next/image"
+import Image from 'next/image'
+import styles from '@/styles/productCard.module.sass'
 
 interface iProduct {
   _id: string
@@ -12,7 +13,7 @@ interface iProduct {
 
 export default function ProductCard ({ product }: { product: iProduct }) {
   return (
-    <li>
+    <li className={styles.li}>
       <Image src={product.image} width={300} height={150} alt={product.name}/>
       <div>
         <div>

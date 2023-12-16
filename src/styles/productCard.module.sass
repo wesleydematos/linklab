@@ -1,0 +1,43 @@
+@import './_variables'
+  
+.li
+  color: $secondary
+  width: fit-content
+  border-radius: 10px
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3)
+  transition: box-shadow 0.3s ease-in-out
+  padding-bottom: 10px
+  &:hover
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4)
+
+  > div
+    padding: 0 10px
+    display: flex
+    justify-content: space-between
+    > div
+      display: flex
+      flex-direction: column
+      justify-content: center
+      gap: 0
+    > p
+      align-self: flex-end
+
+  p
+    font-size: 16.33px
+    font-weight: 600
+
+  span
+    color: #A1A1A1
+    font-size: 10.88px
+    font-weight: 500
+  
+  @media (min-width: 768px)
+    p
+      font-size: 18px
+
+    span
+      font-size: 12px
+
+    img
+      width: 350px
+      height: 178px
