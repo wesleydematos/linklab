@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <StoreProvider>
       <html lang="pt-BR">
-        <body className={dm.className} style={{margin: 0}}>{children}</body>
+        <body className={dm.className} style={{margin: 0, overflowX: 'hidden'}}>{children}</body>
       </html>
     </StoreProvider>
   )
